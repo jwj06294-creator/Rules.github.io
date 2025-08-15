@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게임 준비 - 로빈슨 크루소 디지털 룰북</title>
+  <meta name="description" content="로빈슨 크루소 보드게임의 초기 설정과 컴포넌트 배치 방법을 단계별로 안내합니다.">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0c4a6e 0%, #155e75 50%, #0e7490 100%);
+      min-height: 100vh;
+      color: white;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .nav-home {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-home:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .page-title {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .page-description {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+    
+    .setup-section {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .setup-section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #fbbf24;
+    }
+    
+    .setup-steps {
+      list-style: none;
+      counter-reset: step-counter;
+    }
+    
+    .setup-steps li {
+      counter-increment: step-counter;
+      margin-bottom: 1rem;
+      padding-left: 3rem;
+      position: relative;
+      line-height: 1.6;
+    }
+    
+    .setup-steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #fbbf24;
+      color: #1e293b;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .component-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    
+    .component-card h3 {
+      font-family: 'Cinzel', serif;
+      color: #fbbf24;
+      margin-bottom: 0.5rem;
+    }
+    
+    .component-card p {
+      opacity: 0.9;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .setup-section {
+        padding: 1.5rem;
+      }
+      
+      .component-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="index.html" class="nav-home">← 홈으로 돌아가기</a>
+      <h1 class="logo">⚓ 로빈슨 크루소</h1>
+      <h2 class="page-title">게임 준비</h2>
+      <p class="page-description">
+        게임을 시작하기 위한 초기 설정과 컴포넌트 배치 방법을 단계별로 안내합니다.
+      </p>
+    </div>
+    
+    <div class="setup-section">
+      <h2>🎯 초기 설정</h2>
+      <ol class="setup-steps">
+        <li>시나리오를 선택하고 해당 시나리오 카드를 준비합니다.</li>
+        <li>각 플레이어는 캐릭터를 선택하고 개인 보드와 캐릭터 카드를 받습니다.</li>
+        <li>게임 보드를 중앙에 놓고 각종 토큰과 마커를 준비합니다.</li>
+        <li>시작 섬 타일을 게임 보드에 배치합니다.</li>
+        <li>각 플레이어의 플레이어 토큰을 개인 보드에 놓습니다.</li>
+        <li>초기 자원을 개인 보드에 배치합니다.</li>
+        <li>이벤트 덱, 발명 카드, 미스터리 카드를 각각 섞어서 준비합니다.</li>
+        <li>날씨 마커를 초기 위치에 놓습니다.</li>
+        <li>첫 번째 플레이어를 정하고 첫 번째 플레이어 마커를 줍니다.</li>
+        <li>시나리오별 특별 설정을 적용합니다.</li>
+      </ol>
+    </div>
+    
+    <div class="setup-section">
+      <h2>🎲 컴포넌트 확인</h2>
+      <p>게임 시작 전 모든 컴포넌트가 준비되었는지 확인하세요.</p>
+      
+      <div class="component-grid">
+        <div class="component-card">
+          <h3>게임 보드</h3>
+          <p>메인 게임 보드 1개와 각종 마커 트랙이 포함되어 있습니다.</p>
+        </div>
+        
+        <div class="component-card">
+          <h3>개인 보드</h3>
+          <p>각 플레이어용 개인 보드 4개, 자원 및 토큰 배치 공간이 있습니다.</p>
+        </div>
+        
+        <div class="component-card">
+          <h3>섬 타일</h3>
+          <p>다양한 지형과 자원이 표시된 육각형 섬 타일들입니다.</p>
+        </div>
+        
+        <div class="component-card">
+          <h3>카드들</h3>
+          <p>이벤트, 발명, 미스터리, 야수, 캐릭터 카드 등이 포함됩니다.</p>
+        </div>
+        
+        <div class="component-card">
+          <h3>자원 큐브</h3>
+          <p>나무, 음식, 모피를 나타내는 다양한 색상의 큐브들입니다.</p>
+        </div>
+        
+        <div class="component-card">
+          <h3>토큰류</h3>
+          <p>발견, 부상, 결정, 투지 등 다양한 기능의 토큰들입니다.</p>
+        </div>
+        
+        <div class="component-card">
+          <h3>주사위</h3>
+          <p>액션 실행과 날씨 결정을 위한 특수 주사위들입니다.</p>
+        </div>
+        
+        <div class="component-card">
+          <h3>마커류</h3>
+          <p>날씨, 사기, 무기 레벨 등을 추적하는 각종 마커들입니다.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="setup-section">
+      <h2>⚠️ 주의사항</h2>
+      <ul style="list-style-type: disc; margin-left: 2rem; line-height: 1.8;">
+        <li>시나리오별로 초기 설정이 다를 수 있으니 시나리오 카드를 반드시 확인하세요.</li>
+        <li>프라이데이 캐릭터는 특별한 규칙이 적용되므로 주의깊게 읽어보세요.</li>
+        <li>첫 게임이라면 시나리오 1번 '로빈슨의 꿈'으로 시작하는 것을 권장합니다.</li>
+        <li>모든 플레이어가 규칙을 이해했는지 확인한 후 게임을 시작하세요.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

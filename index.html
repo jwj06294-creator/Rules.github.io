@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로빈슨 크루소 디지털 룰북 | Robinson Crusoe Digital Rulebook</title>
+  <meta name="description" content="로빈슨 크루소: 저주받은 섬의 모험 보드게임을 위한 완벽한 디지털 가이드. 게임 규칙, 컴포넌트 설명, 시나리오 가이드를 한국어로 제공합니다.">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://robinson-crusoe-rulebook.replit.app/">
+  <meta property="og:title" content="로빈슨 크루소 디지털 룰북 | Robinson Crusoe Digital Rulebook">
+  <meta property="og:description" content="로빈슨 크루소: 저주받은 섬의 모험 보드게임을 위한 완벽한 디지털 가이드. 게임 규칙, 컴포넌트 설명, 시나리오 가이드를 한국어로 제공합니다.">
+  <meta property="og:image" content="/og-image.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0c4a6e 0%, #155e75 50%, #0e7490 100%);
+      min-height: 100vh;
+      color: white;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .subtitle {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+    
+    .description {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .nav-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .nav-card:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .nav-card p {
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+    
+    .icon {
+      font-size: 1.8rem;
+    }
+    
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 2.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .container {
+        padding: 1rem;
+      }
+      
+      .nav-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="logo">
+        ⚓ 로빈슨 크루소
+      </h1>
+      <p class="subtitle">저주받은 섬의 모험</p>
+      <p class="description">
+        보드게임 '로빈슨 크루소: 저주받은 섬의 모험'을 위한 완벽한 디지털 룰북입니다. 
+        게임 설정부터 고급 전략까지 모든 정보를 한국어로 제공합니다.
+      </p>
+    </div>
+    
+    <div class="nav-grid">
+      <a href="setup.html" class="nav-card">
+        <h3><span class="icon">🎯</span> 게임 준비</h3>
+        <p>게임을 시작하기 위한 초기 설정과 컴포넌트 배치 방법을 안내합니다.</p>
+      </a>
+      
+      <a href="gameflow.html" class="nav-card">
+        <h3><span class="icon">⚡</span> 게임 진행</h3>
+        <p>라운드별 단계 순서와 각 단계의 상세한 진행 방법을 설명합니다.</p>
+      </a>
+      
+      <a href="actions(2).html" class="nav-card">
+        <h3><span class="icon">🔧</span> 액션 가이드</h3>
+        <p>건설, 수집, 탐험, 사냥 등 모든 액션의 자세한 실행 방법을 제공합니다.</p>
+      </a>
+      
+      <a href="components.html" class="nav-card">
+        <h3><span class="icon">🎲</span> 컴포넌트</h3>
+        <p>게임에 포함된 모든 구성 요소의 상세한 설명과 사용법을 안내합니다.</p>
+      </a>
+      
+      <a href="reference.html" class="nav-card">
+        <h3><span class="icon">📚</span> 규칙 참조</h3>
+        <p>빠른 검색이 가능한 전체 규칙 참조서와 자주 묻는 질문들을 제공합니다.</p>
+      </a>
+      
+      <a href="scenarios.html" class="nav-card">
+        <h3><span class="icon">🏝️</span> 시나리오</h3>
+        <p>각 시나리오별 특별 규칙과 승리 조건, 전략적 조언을 제공합니다.</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

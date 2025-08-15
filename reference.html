@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>규칙 참조 - 로빈슨 크루소 디지털 룰북</title>
+  <meta name="description" content="로빈슨 크루소 보드게임의 빠른 검색이 가능한 전체 규칙 참조서와 자주 묻는 질문들을 제공합니다.">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0c4a6e 0%, #155e75 50%, #0e7490 100%);
+      min-height: 100vh;
+      color: white;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .nav-home {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-home:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .page-title {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .page-description {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+    
+    .search-section {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .search-box {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1.1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .search-box::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .search-box:focus {
+      outline: none;
+      border-color: #fbbf24;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+    }
+    
+    .category-filters {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .category-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .category-btn:hover,
+    .category-btn.active {
+      background: #fbbf24;
+      color: #1e293b;
+      border-color: #fbbf24;
+    }
+    
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .rule-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .rule-card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .rule-category {
+      display: inline-block;
+      background: rgba(251, 191, 36, 0.2);
+      color: #fbbf24;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      border: 1px solid #fbbf24;
+    }
+    
+    .rule-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: white;
+    }
+    
+    .rule-content {
+      line-height: 1.6;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+    
+    .no-results {
+      text-align: center;
+      padding: 3rem;
+      opacity: 0.7;
+      font-style: italic;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .rules-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .search-section {
+        padding: 1.5rem;
+      }
+      
+      .category-filters {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="index.html" class="nav-home">← 홈으로 돌아가기</a>
+      <h1 class="logo">⚓ 로빈슨 크루소</h1>
+      <h2 class="page-title">규칙 참조</h2>
+      <p class="page-description">
+        빠른 검색이 가능한 전체 규칙 참조서와 자주 묻는 질문들
+      </p>
+    </div>
+    
+    <div class="search-section">
+      <input type="text" class="search-box" placeholder="규칙을 검색하세요..." oninput="searchRules(this.value)">
+      <div class="category-filters">
+        <button class="category-btn active" onclick="filterByCategory('전체')">전체</button>
+        <button class="category-btn" onclick="filterByCategory('기본 규칙')">기본 규칙</button>
+        <button class="category-btn" onclick="filterByCategory('고급 규칙')">고급 규칙</button>
+        <button class="category-btn" onclick="filterByCategory('구성 요소')">구성 요소</button>
+        <button class="category-btn" onclick="filterByCategory('부록')">부록</button>
+        <button class="category-btn" onclick="filterByCategory('카드 효과')">카드 효과</button>
+      </div>
+    </div>
+    
+    <div id="rules-container" class="rules-grid">
+      <!-- 규칙 카드들이 여기에 동적으로 생성됩니다 -->
+    </div>
+    
+    <div id="no-results" class="no-results" style="display: none;">
+      검색 결과가 없습니다. 다른 키워드로 검색해보세요.
+    </div>
+  </div>
+  
+  <script>
+    const rules = [
+      // 기본 규칙
+      {
+        category: "기본 규칙",
+        title: "게임 목표",
+        content: "각 시나리오별로 주어진 특별한 목표를 달성하면서 12라운드 동안 생존하는 것이 게임의 기본 목표입니다."
+      },
+      {
+        category: "기본 규칙",
+        title: "라운드 구조",
+        content: "각 라운드는 6단계로 구성됩니다: 이벤트 → 투지 → 생산 → 액션 → 날씨 → 밤 단계 순으로 진행됩니다."
+      },
+      {
+        category: "기본 규칙",
+        title: "액션 선택",
+        content: "플레이어는 각 라운드마다 2개의 플레이어 토큰을 사용하여 2가지 다른 액션을 선택할 수 있습니다."
+      },
+      
+      // 구성 요소
+      {
+        category: "구성 요소",
+        title: "자원 큐브",
+        content: "나무(갈색), 음식(주황색), 모피(회색) 큐브로 게임의 기본 자원을 나타냅니다. 각각 최대 저장량이 정해져 있습니다."
+      },
+      {
+        category: "구성 요소",
+        title: "결정 토큰",
+        content: "주사위 결과를 조작하거나 추가 효과를 얻기 위해 사용하는 토큰입니다. 투지 수준에 따라 매 라운드 획득량이 결정됩니다."
+      },
+      {
+        category: "구성 요소",
+        title: "발견 토큰",
+        content: "탐험을 통해 얻을 수 있는 특별한 보상으로, 다양한 유용한 효과를 제공합니다."
+      },
+      
+      // 고급 규칙
+      {
+        category: "고급 규칙",
+        title: "발견 토큰 소모",
+        content: "발견 토큰은 사용하면 버려집니다. 토큰 더미가 다 떨어지면 더 이상 새로운 발견 토큰을 얻을 수 없습니다. 음식이나 나무를 즉시 제공하는 토큰은 '지금 사용 가능한 자원' 칸에 내려오자마자 교환해야 합니다."
+      },
+      {
+        category: "고급 규칙",
+        title: "발명/아이템 카드 처리",
+        content: "발명 카드는 앞뒤면의 이름이 다르므로 발명 카드일 때만 버릴 수 있습니다. 사용 후 버려지는 발명 카드는 별도의 버림 더미가 없으며, 보드 밖의 발명 카드 덱으로 되돌려 섞습니다."
+      },
+      {
+        category: "고급 규칙",
+        title: "지형과 발명 카드 제한",
+        content: "지도 타일의 특정 지형이 검은 마커로 막힌 경우, 그 지형이 지도상 유일한 것이었다면 해당 지형 관련 발명 카드를 더 이상 만들 수 없습니다."
+      },
+      {
+        category: "고급 규칙",
+        title: "아이템 분실 처리",
+        content: "아이템을 잃고 발명 카드로 되돌릴 때는 카드에 적힌 자원 효과를 반납해야 합니다. 하지만 이미 제작된 아이템들의 효과는 그대로 유지됩니다."
+      },
+      
+      // 부록 규칙
+      {
+        category: "부록",
+        title: "보물 카드 사용",
+        content: "보물 카드를 얻을 때 특별한 언급이 없으면 나중에 쓸 수 있는 자원 칸으로 갑니다 (발명카드처럼). 액션 단계가 끝나면 사용할 수 있습니다."
+      },
+      {
+        category: "부록",
+        title: "지도 탐험 제한",
+        content: "1개 시작 타일 제외하면 9개 타일만 탐험합니다. 맵의 가장 오른쪽에 있는 세 칸은 그냥 장식이라서 탐험하는 곳이 아닙니다."
+      },
+      {
+        category: "부록",
+        title: "나중에 쓸 수 있는 자원",
+        content: "나중에 쓸 수 있는 자원 칸은 절대 버려질 수 없습니다."
+      },
+      {
+        category: "부록",
+        title: "프라이데이 특별 규칙",
+        content: "프라이데이는 날씨 단계 때 굶주린 동물 주사위에도 영향을 받지 않습니다. 프라이데이는 나와 같이 야영지에 살지 않는다고 기억하는 것이 편합니다."
+      },
+      {
+        category: "부록",
+        title: "야외 야영 규칙",
+        content: "밖에서 자야한다면 그 행동으로 얻는 자원만 캐릭터 카드 위로 올라가고 그 자원으로만 밤에 저녁밥을 해결해야 합니다. 자신의 말이 있는 곳에 자연적인 임시 오두막이 없다면 1상처, 얻은 자원중에 밥이 없다면 2상처를 입습니다."
+      },
+      {
+        category: "부록",
+        title: "다시 굴리기 토큰",
+        content: "다시 굴리기 토큰이 있으면 주사위 세개 다 굴린 후 성공 주사위가 나왔을 때 그 성공 주사위만 다시 굴려서 효과를 적용합니다."
+      },
+      {
+        category: "부록",
+        title: "미스터리 카드 덱",
+        content: "미스터리 카드는 버리는 더미 덱이 있고 만약에 미스터리 카드가 다 떨어지면 버리는 카드 더미로 새 미스터리 카드 덱을 만듭니다."
+      },
+      
+      // 카드 효과
+      {
+        category: "카드 효과",
+        title: "이벤트 카드 기본 구조",
+        content: "이벤트 카드는 위협과 모험 두 부분으로 나뉩니다. 위협 부분은 즉시 적용되는 부정적 효과이고, 모험 부분은 플레이어가 선택적으로 도전할 수 있는 내용입니다."
+      },
+      {
+        category: "카드 효과",
+        title: "캐릭터 특별 능력",
+        content: "각 캐릭터는 고유한 특별 능력을 가지고 있습니다. 이 능력들은 보통 특정 액션에서 보너스를 제공하거나, 자원 획득에 유리함을 주거나, 특별한 상황에서 추가 선택지를 제공합니다."
+      }
+    ];
+    
+    let currentFilter = '전체';
+    let currentSearch = '';
+    
+    function renderRules(rulesToRender) {
+      const container = document.getElementById('rules-container');
+      const noResults = document.getElementById('no-results');
+      
+      if (rulesToRender.length === 0) {
+        container.innerHTML = '';
+        noResults.style.display = 'block';
+        return;
+      }
+      
+      noResults.style.display = 'none';
+      container.innerHTML = rulesToRender.map(rule => `
+        <div class="rule-card">
+          <div class="rule-category">${rule.category}</div>
+          <div class="rule-title">${rule.title}</div>
+          <div class="rule-content">${rule.content}</div>
+        </div>
+      `).join('');
+    }
+    
+    function filterRules() {
+      let filteredRules = rules;
+      
+      // 카테고리 필터 적용
+      if (currentFilter !== '전체') {
+        filteredRules = filteredRules.filter(rule => rule.category === currentFilter);
+      }
+      
+      // 검색 필터 적용
+      if (currentSearch) {
+        filteredRules = filteredRules.filter(rule => 
+          rule.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
+          rule.content.toLowerCase().includes(currentSearch.toLowerCase())
+        );
+      }
+      
+      renderRules(filteredRules);
+    }
+    
+    function filterByCategory(category) {
+      currentFilter = category;
+      
+      // 버튼 활성화 상태 업데이트
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      filterRules();
+    }
+    
+    function searchRules(searchTerm) {
+      currentSearch = searchTerm;
+      filterRules();
+    }
+    
+    // 초기 렌더링
+    renderRules(rules);
+  </script>
+</body>
+</html>

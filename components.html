@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컴포넌트 - 로빈슨 크루소 디지털 룰북</title>
+  <meta name="description" content="로빈슨 크루소 보드게임에 포함된 모든 구성 요소의 상세한 설명과 사용법을 안내합니다.">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0c4a6e 0%, #155e75 50%, #0e7490 100%);
+      min-height: 100vh;
+      color: white;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .nav-home {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-home:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .page-title {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .page-description {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+    
+    .components-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .component-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .component-card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .component-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .component-icon {
+      font-size: 2.5rem;
+      background: rgba(251, 191, 36, 0.2);
+      padding: 0.5rem;
+      border-radius: 12px;
+      border: 2px solid #fbbf24;
+    }
+    
+    .component-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #fbbf24;
+    }
+    
+    .component-description {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      opacity: 0.9;
+      font-size: 1rem;
+    }
+    
+    .component-details {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .detail-section {
+      margin-bottom: 1rem;
+    }
+    
+    .detail-title {
+      font-weight: 600;
+      color: #fbbf24;
+      margin-bottom: 0.5rem;
+    }
+    
+    .detail-content {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+    
+    .component-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .component-list li {
+      margin-bottom: 0.5rem;
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.4;
+      font-size: 0.9rem;
+    }
+    
+    .component-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #fbbf24;
+      font-weight: bold;
+    }
+    
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .spec-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    
+    .spec-label {
+      font-weight: 600;
+      color: #fbbf24;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .components-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .component-card {
+        padding: 1.5rem;
+      }
+      
+      .specs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="index.html" class="nav-home">← 홈으로 돌아가기</a>
+      <h1 class="logo">⚓ 로빈슨 크루소</h1>
+      <h2 class="page-title">컴포넌트</h2>
+      <p class="page-description">
+        게임에 포함된 모든 구성 요소의 상세한 설명과 사용법
+      </p>
+    </div>
+    
+    <div class="components-grid">
+      <div class="component-card">
+        <div class="component-header">
+          <div class="component-icon">🎯</div>
+          <div class="component-title">플레이어 행동말</div>
+        </div>
+        <div class="component-description">
+          각 플레이어가 액션을 수행하기 위해 사용하는 나무 피규어입니다.
+        </div>
+        <div class="component-details">
+          <div class="detail-section">
+            <div class="detail-title">구성</div>
+            <div class="detail-content">플레이어당 2개씩, 총 8개 (4인 기준)</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-title">용도</div>
+            <div class="detail-content">게임 보드의 액션 칸에 배치하여 해당 액션을 수행합니다. 각 라운드마다 2개의 행동말로 2가지 액션을 선택할 수 있습니다.</div>
+          </div>
+        </div>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <span class="spec-label">재질</span>
+            나무 (도색 완료)
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">크기</span>
+            높이 20mm, 지름 12mm
+          </div>
+        </div>
+      </div>
+      
+      <div class="component-card">
+        <div class="component-header">
+          <div class="component-icon">💔</div>
+          <div class="component-title">상처 큐브</div>
+        </div>
+        <div class="component-description">
+          캐릭터가 받은 부상을 표시하는 빨간색 나무 큐브입니다.
+        </div>
+        <div class="component-details">
+          <div class="detail-section">
+            <div class="detail-title">구성</div>
+            <div class="detail-content">빨간색 큐브 20개</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-title">용도</div>
+            <div class="detail-content">캐릭터가 부상을 받을 때마다 개인 보드에 배치합니다. 부상이 많을수록 행동이 제한되며, 너무 많이 쌓이면 캐릭터가 죽을 수 있습니다.</div>
+          </div>
+        </div>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <span class="spec-label">재질</span>
+            나무 (빨간색 도색)
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">크기</span>
+            8mm x 8mm x 8mm
+          </div>
+        </div>
+      </div>
+      
+      <div class="component-card">
+        <div class="component-header">
+          <div class="component-icon">🎲</div>
+          <div class="component-title">주사위 세트</div>
+        </div>
+        <div class="component-description">
+          액션 실행과 날씨 결정을 위한 특수 주사위들입니다.
+        </div>
+        <div class="component-details">
+          <div class="detail-section">
+            <div class="detail-title">구성</div>
+            <ul class="component-list">
+              <li>제작 주사위 (갈색): 건설 액션용</li>
+              <li>채집 주사위 (초록색): 수집 액션용</li>
+              <li>탐험 주사위 (노란색): 탐험 액션용</li>
+              <li>날씨 주사위 (파란색): 날씨 변화용</li>
+              <li>굶주린 동물 주사위 (흰색): 야수 공격용</li>
+            </ul>
+          </div>
+          <div class="detail-section">
+            <div class="detail-title">사용법</div>
+            <div class="detail-content">각 액션을 수행할 때 해당하는 주사위를 굴려 성공/실패를 결정합니다. 주사위 면에는 성공, 실패, 부상 등의 결과가 표시되어 있습니다.</div>
+          </div>
+        </div>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <span class="spec-label">재질</span>
+            플라스틱 (각종 색상)
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">크기</span>
+            16mm 6면체
+          </div>
+        </div>
+      </div>
+      
+      <div class="component-card">
+        <div class="component-header">
+          <div class="component-icon">🔢</div>
+          <div class="component-title">숫자 토큰</div>
+        </div>
+        <div class="component-description">
+          자원의 양이나 레벨을 표시하는 원형 토큰입니다.
+        </div>
+        <div class="component-details">
+          <div class="detail-section">
+            <div class="detail-title">구성</div>
+            <ul class="component-list">
+              <li>1~5 표시 토큰: 각 5개씩</li>
+              <li>10, 15, 20 표시 토큰: 각 3개씩</li>
+              <li>다양한 크기와 색상으로 구분</li>
+            </ul>
+          </div>
+          <div class="detail-section">
+            <div class="detail-title">용도</div>
+            <div class="detail-content">자원 큐브가 많을 때 대신 사용하거나, 무기 레벨, 사기 수준 등을 표시하는데 사용합니다.</div>
+          </div>
+        </div>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <span class="spec-label">재질</span>
+            고급 카드보드 (매트 코팅)
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">크기</span>
+            원형, 지름: 25mm
+          </div>
+        </div>
+      </div>
+      
+      <div class="component-card">
+        <div class="component-header">
+          <div class="component-icon">🏕️</div>
+          <div class="component-title">야영지/오두막 토큰</div>
+        </div>
+        <div class="component-description">
+          플레이어의 야영지와 건설된 오두막의 위치를 표시합니다.
+        </div>
+        <div class="component-details">
+          <div class="detail-section">
+            <div class="detail-title">구성</div>
+            <ul class="component-list">
+              <li>야영지 토큰: 갈색 원형 4개</li>
+              <li>오두막 토큰: 회색 사각형 8개</li>
+              <li>각각 다른 디자인으로 구분</li>
+            </ul>
+          </div>
+          <div class="detail-section">
+            <div class="detail-title">용도</div>
+            <div class="detail-content">야영지는 플레이어들의 기지 역할을 하며, 오두막은 건설을 통해 만들 수 있는 구조물입니다. 둘 다 안전한 잠자리를 제공합니다.</div>
+          </div>
+        </div>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <span class="spec-label">재질</span>
+            고급 카드보드 (매트 코팅)
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">크기</span>
+            야영지: 지름 35mm, 오두막: 25x25mm
+          </div>
+        </div>
+      </div>
+      
+      <div class="component-card">
+        <div class="component-header">
+          <div class="component-icon">🏆</div>
+          <div class="component-title">기타 토큰</div>
+        </div>
+        <div class="component-description">
+          게임 진행에 필요한 다양한 특수 토큰들입니다.
+        </div>
+        <div class="component-details">
+          <div class="detail-section">
+            <div class="detail-title">포함 토큰</div>
+            <ul class="component-list">
+              <li>바구니 토큰: 노란 바구니 (자원 저장)</li>
+              <li>자루 토큰: 크림색 자루 (아이템 보관)</li>
+              <li>주사위 재굴림 토큰: 노란 V자 (주사위 다시 굴리기)</li>
+              <li>행동말 -1 토큰: 흰색 인물 (행동 시 추가 행동말 필요)</li>
+              <li>발견 토큰: 갈색 미로 (탐험을 통해 얻는 특별 보상)</li>
+            </ul>
+          </div>
+          <div class="detail-section">
+            <div class="detail-title">사용법</div>
+            <div class="detail-content">발견 토큰은 탐험을 통해 획득하는 특별한 보상으로, 즉시 효과와 지속 효과 두 종류가 있습니다. 즉시 효과 토큰(음식, 나무 등)은 획득하자마자 사용해야 하며, 지속 효과 토큰은 나중에 사용할 수 있도록 보관할 수 있습니다. 토큰은 사용하면 버려지며, 토큰 더미가 다 떨어지면 더 이상 새로운 발견 토큰을 얻을 수 없습니다. 자원 부족으로 토큰을 받을 수 없는 경우 부상을 받게 됩니다. 행동말 -1 토큰의 경우, 행동을 할 때 원래 필요한 말의 개수보다 하나를 추가로 더 놓아야 하며, 야영지가 아닌 섬에서는 토큰을 버리지 못합니다.</div>
+          </div>
+        </div>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <span class="spec-label">재질</span>
+            고급 카드보드 (매트 코팅)
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">크기</span>
+            원형, 지름: 30mm
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게임 개요 - 로빈슨 크루소 디지털 룰북</title>
+  <meta name="description" content="로빈슨 크루소 보드게임의 전반적인 개요와 핵심 개념을 소개합니다.">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0c4a6e 0%, #155e75 50%, #0e7490 100%);
+      min-height: 100vh;
+      color: white;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .nav-home {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-home:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .page-title {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .page-description {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+    
+    .overview-section {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: #fbbf24;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .section-content {
+      line-height: 1.7;
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .stat-card {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fbbf24;
+      display: block;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 0.5rem;
+    }
+    
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .concept-card {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-left: 4px solid #fbbf24;
+    }
+    
+    .concept-title {
+      font-weight: 600;
+      color: #fbbf24;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .concept-content {
+      line-height: 1.5;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+    
+    .highlight-box {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .highlight-title {
+      color: #fbbf24;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .overview-section {
+        padding: 1.5rem;
+      }
+      
+      .stats-grid,
+      .concept-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="index.html" class="nav-home">← 홈으로 돌아가기</a>
+      <h1 class="logo">⚓ 로빈슨 크루소</h1>
+      <h2 class="page-title">게임 개요</h2>
+      <p class="page-description">
+        저주받은 섬의 모험 - 게임의 전반적인 개요와 핵심 개념
+      </p>
+    </div>
+    
+    <div class="overview-section">
+      <h2 class="section-title">🏝️ 게임 소개</h2>
+      <div class="section-content">
+        <p>
+          로빈슨 크루소: 저주받은 섬의 모험은 1-4명의 플레이어가 함께 무인도에서 생존하는 협력형 보드게임입니다. 
+          플레이어들은 각각 독특한 능력을 가진 캐릭터가 되어 자원을 수집하고, 도구를 만들며, 섬을 탐험하면서 
+          다양한 시나리오의 목표를 달성해야 합니다.
+        </p>
+        <br>
+        <p>
+          게임은 총 12라운드에 걸쳐 진행되며, 각 라운드는 6개의 단계로 구성됩니다. 
+          플레이어들은 매 라운드마다 2개의 액션을 선택하여 생존과 목표 달성을 위해 노력해야 합니다. 
+          단순한 생존을 넘어서 각 시나리오마다 독특한 도전과 스토리가 기다리고 있습니다.
+        </p>
+      </div>
+    </div>
+    
+    <div class="overview-section">
+      <h2 class="section-title">📊 게임 기본 정보</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">1-4</span>
+          <div class="stat-label">플레이어 수</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">14+</span>
+          <div class="stat-label">권장 연령</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">90-180</span>
+          <div class="stat-label">게임 시간 (분)</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">6</span>
+          <div class="stat-label">기본 시나리오</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="overview-section">
+      <h2 class="section-title">🎯 핵심 게임 메커니즘</h2>
+      <div class="concept-grid">
+        <div class="concept-card">
+          <div class="concept-title">협력 게임플레이</div>
+          <div class="concept-content">
+            모든 플레이어가 함께 협력하여 공통의 목표를 달성해야 합니다. 개별적인 승리는 없으며, 
+            팀 전체가 성공하거나 실패합니다.
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-title">자원 관리</div>
+          <div class="concept-content">
+            나무, 음식, 모피 등의 자원을 효율적으로 수집하고 관리해야 합니다. 
+            각 자원에는 저장 한계가 있어 계획적인 사용이 필요합니다.
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-title">위험과 보상</div>
+          <div class="concept-content">
+            모든 액션에는 위험이 따릅니다. 주사위를 굴려 성공과 실패를 결정하며, 
+            실패 시 부상이나 자원 손실 등의 페널티를 받습니다.
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-title">발명과 건설</div>
+          <div class="concept-content">
+            다양한 도구와 피난처를 만들어 생존 확률을 높일 수 있습니다. 
+            각 발명품은 특별한 능력을 제공하며 게임플레이를 풍부하게 만듭니다.
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-title">탐험과 발견</div>
+          <div class="concept-content">
+            섬을 탐험하여 새로운 지역을 발견하고 유용한 발견 토큰을 획득할 수 있습니다. 
+            탐험은 위험하지만 큰 보상을 가져다줍니다.
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-title">시나리오 기반</div>
+          <div class="concept-content">
+            각 시나리오마다 다른 목표와 특수 규칙이 있어 매번 새로운 경험을 제공합니다. 
+            난이도와 테마가 다양하여 리플레이 가치가 높습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="overview-section">
+      <h2 class="section-title">⚡ 액션 시스템</h2>
+      <div class="section-content">
+        <p>
+          게임의 핵심은 액션 선택 시스템입니다. 플레이어들은 매 라운드마다 다음 7가지 액션 중에서 2개를 선택할 수 있습니다:
+        </p>
+        
+        <div class="concept-grid" style="margin-top: 1.5rem;">
+          <div class="concept-card">
+            <div class="concept-title">🔧 건설</div>
+            <div class="concept-content">피난처, 도구, 발명품을 만듭니다</div>
+          </div>
+          <div class="concept-card">
+            <div class="concept-title">🌿 수집</div>
+            <div class="concept-content">현재 지역에서 자원을 수집합니다</div>
+          </div>
+          <div class="concept-card">
+            <div class="concept-title">🗺️ 탐험</div>
+            <div class="concept-content">새로운 섬 지역을 발견합니다</div>
+          </div>
+          <div class="concept-card">
+            <div class="concept-title">🏹 사냥</div>
+            <div class="concept-content">야수를 사냥하여 음식을 얻습니다</div>
+          </div>
+          <div class="concept-card">
+            <div class="concept-title">💤 휴식</div>
+            <div class="concept-content">부상을 치료하고 회복합니다</div>
+          </div>
+          <div class="concept-card">
+            <div class="concept-title">🏕️ 야영지 정비</div>
+            <div class="concept-content">야영지를 이동하거나 정리합니다</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="highlight-box">
+      <div class="highlight-title">🌟 로빈슨 크루소의 매력</div>
+      <div class="section-content">
+        이 게임의 가장 큰 매력은 매번 다른 경험을 제공한다는 점입니다. 
+        무작위로 배치되는 섬 타일, 예측 불가능한 이벤트, 다양한 시나리오가 결합되어 
+        수십 번을 플레이해도 지루하지 않습니다. 또한 협력 게임의 특성상 
+        플레이어들 간의 소통과 전략적 사고가 중요하여, 함께하는 재미를 극대화합니다.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
