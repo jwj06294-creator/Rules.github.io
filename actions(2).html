@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>액션 가이드 - 로빈슨 크루소 디지털 룰북</title>
+  <meta name="description" content="로빈슨 크루소 보드게임의 건설, 수집, 탐험, 사냥 등 모든 액션의 자세한 실행 방법을 제공합니다.">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body body {
+  background-image: url('Background.jpg'); /* 이미지 파일 경로 */
+  background-size: cover; /* 화면을 꽉 채우도록 설정 */
+  background-repeat: no-repeat; /* 이미지 반복 방지 */
+  background-position: center center; /* 이미지를 중앙에 위치 */
+}
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .nav-home {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-home:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .page-title {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .page-description {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+    
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .action-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
+    }
+    
+    .action-card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .action-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .action-icon {
+      font-size: 2rem;
+      background: rgba(251, 191, 36, 0.2);
+      padding: 0.4rem;
+      border-radius: 10px;
+      border: 2px solid #fbbf24;
+    }
+    
+    .action-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #fbbf24;
+    }
+    
+    .action-description {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+      opacity: 0.9;
+      font-size: 1rem;
+      flex-grow: 1;
+    }
+    
+    .action-steps {
+      list-style: none;
+      counter-reset: step-counter;
+    }
+    
+    .action-steps li {
+      counter-increment: step-counter;
+      margin-bottom: 0.6rem;
+      padding-left: 2rem;
+      position: relative;
+      line-height: 1.4;
+      opacity: 0.95;
+      font-size: 0.9rem;
+    }
+    
+    .action-steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #fbbf24;
+      color: #1e293b;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
+    
+    .tips-section {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 6px;
+      padding: 0.75rem;
+      margin-top: 1rem;
+    }
+    
+    .tips-title {
+      color: #22c55e;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+    }
+    
+    .tips-content {
+      font-size: 0.8rem;
+      line-height: 1.4;
+      opacity: 0.9;
+    }
+    
+    .expand-button {
+      background: #fbbf24;
+      color: #1e293b;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 0.25rem;
+      align-self: flex-start;
+      font-size: 0.85rem;
+    }
+    
+    .expand-button:hover {
+      background: #f59e0b;
+      transform: translateY(-1px);
+    }
+    
+    .detailed-content {
+      display: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .detailed-content.show {
+      display: block;
+    }
+    
+    /* 공통 규칙 요약 스타일 */
+    .common-rules-summary {
+      background: rgba(251, 191, 36, 0.1);
+      border: 2px solid rgba(251, 191, 36, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      backdrop-filter: blur(8px);
+    }
+    
+    .summary-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .summary-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    
+    .summary-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .summary-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    .summary-text {
+      font-size: 0.9rem;
+      opacity: 0.95;
+      line-height: 1.3;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .actions-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .action-card {
+        padding: 1.5rem;
+      }
+      
+      .action-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .summary-title {
+        font-size: 1.3rem;
+      }
+      
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .summary-item {
+        padding: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="home.html" class="nav-home" style="position: absolute; top: 2rem; left: 2rem; z-index: 10;">← 홈으로 돌아가기</a>
+    <div class="header">
+      <div class="logo" onclick="location.href='home.html'">
+        <img src="attached_assets/logo_1755270293819.png" alt="Robinson Crusoe Logo" style="height: 80px; object-fit: contain; cursor: pointer;">
+      </div>
+      <h2 class="page-title">액션 가이드</h2>
+      <p class="page-description">
+        건설, 수집, 탐험, 사냥 등 모든 액션의 자세한 실행 방법
+      </p>
+      
+      <!-- 공통 규칙 요약 -->
+      <div class="common-rules-summary">
+        <h3 class="summary-title">📋 액션 공통 규칙</h3>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <span class="summary-icon">⚡</span>
+            <span class="summary-text">라운드당 액션 포인트 2개</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-icon">🎲</span>
+            <span class="summary-text">결정 토큰으로 주사위 ±1</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-icon">🩹</span>
+            <span class="summary-text">실패 시 부상 위험</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-icon">🔄</span>
+            <span class="summary-text">자원 저장 한계 준수</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-icon">📍</span>
+            <span class="summary-text">위치별 액션 제한</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-icon">🌟</span>
+            <span class="summary-text">결정 토큰 2개 시작</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="actions-grid">
+      <div class="action-card">
+        <div class="action-header">
+          <div class="action-icon">⚠️</div>
+          <div class="action-title">위험 대비</div>
+        </div>
+        <div class="action-description">
+          다가오는 위험에 미리 대비하여 피해를 줄입니다.
+        </div>
+        <button class="expand-button" onclick="toggleDetails('threat-details')">상세 규칙 보기</button>
+        <div id="threat-details" class="detailed-content">
+          <ol class="action-steps">
+            <li>위험 카드 덱에서 맨 위 카드를 확인합니다</li>
+            <li>대비할 위험의 종류를 선택합니다 (날씨, 야수, 질병 등)</li>
+            <li>위험 대비 주사위를 굴려 성공 여부를 확인합니다</li>
+            <li>성공 시 해당 위험의 피해를 줄이거나 무효화합니다</li>
+            <li>실패 시에도 부분적인 보호 효과를 얻을 수 있습니다</li>
+          </ol>
+          <div class="tips-section">
+            <div class="tips-title">💡 위험 대비 팁</div>
+            <div class="tips-content">
+              미리 위험에 대비하는 것이 생존의 핵심입니다. 특히 겨울철이나 폭풍 전에는 반드시 대비하세요. 적절한 도구나 건축물이 있으면 성공률이 높아집니다.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="action-card">
+        <div class="action-header">
+          <div class="action-icon">🏹</div>
+          <div class="action-title">사냥</div>
+        </div>
+        <div class="action-description">
+          야수를 사냥하여 음식과 모피를 획득합니다.
+        </div>
+        <button class="expand-button" onclick="toggleDetails('hunt-details')">상세 규칙 보기</button>
+        <div id="hunt-details" class="detailed-content">
+          <ol class="action-steps">
+            <li>현재 섬에 있는 야수 카드를 선택합니다</li>
+            <li>무기 레벨과 사냥 주사위를 확인합니다</li>
+            <li>주사위를 굴려 공격 결과를 확인합니다</li>
+            <li>야수의 방어력보다 높으면 사냥에 성공합니다</li>
+            <li>성공 시 음식과 모피를 획득하고, 실패 시 부상을 받습니다</li>
+          </ol>
+          <div class="tips-section">
+            <div class="tips-title">💡 사냥 팁</div>
+            <div class="tips-content">
+              무기 레벨이 높을수록 사냥 성공률이 높아집니다. 일부 야수는 특별한 능력을 가지고 있으니 주의하세요.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="action-card">
+        <div class="action-header">
+          <div class="action-icon">🔧</div>
+          <div class="action-title">건설</div>
+        </div>
+        <div class="action-description">
+          피난처, 울타리, 발명품 등을 건설하여 생존 조건을 개선합니다.
+        </div>
+        <button class="expand-button" onclick="toggleDetails('construction-details')">상세 규칙 보기</button>
+        <div id="construction-details" class="detailed-content">
+          <ol class="action-steps">
+            <li>건설하고 싶은 발명 카드를 선택합니다</li>
+            <li>필요한 자원을 확인하고 지불합니다</li>
+            <li>건설 주사위를 굴려 성공 여부를 확인합니다</li>
+            <li>성공 시 발명품을 완성하고 효과를 적용합니다</li>
+            <li>실패 시 일부 자원을 잃거나 부상을 받을 수 있습니다</li>
+          </ol>
+          <div class="tips-section">
+            <div class="tips-title">💡 건설 팁</div>
+            <div class="tips-content">
+              피난처와 무기를 우선적으로 건설하는 것이 생존에 유리합니다. 결정 토큰을 사용해 주사위 결과를 조작할 수 있습니다.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="action-card">
+        <div class="action-header">
+          <div class="action-icon">🌿</div>
+          <div class="action-title">수집</div>
+        </div>
+        <div class="action-description">
+          현재 위치한 지형에서 자원을 수집합니다.
+        </div>
+        <button class="expand-button" onclick="toggleDetails('gather-details')">상세 규칙 보기</button>
+        <div id="gather-details" class="detailed-content">
+          <ol class="action-steps">
+            <li>현재 위치한 섬 타일의 자원 아이콘을 확인합니다</li>
+            <li>수집 주사위를 굴려 획득할 자원의 양을 결정합니다</li>
+            <li>주사위 결과에 따라 자원을 획득합니다</li>
+            <li>일부 지형에서는 추가 효과나 위험이 있을 수 있습니다</li>
+            <li>자원 저장 한계를 초과하지 않도록 주의합니다</li>
+          </ol>
+          <div class="tips-section">
+            <div class="tips-title">💡 수집 팁</div>
+            <div class="tips-content">
+              각 지형마다 얻을 수 있는 자원이 다릅니다. 숲에서는 나무, 초원에서는 음식, 산에서는 모피를 얻을 수 있습니다.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="action-card">
+        <div class="action-header">
+          <div class="action-icon">🗺️</div>
+          <div class="action-title">탐험</div>
+        </div>
+        <div class="action-description">
+          새로운 섬 타일을 발견하고 발견 토큰을 획득합니다.
+        </div>
+        <button class="expand-button" onclick="toggleDetails('explore-details')">상세 규칙 보기</button>
+        <div id="explore-details" class="detailed-content">
+          <ol class="action-steps">
+            <li>탐험할 방향을 선택하고 새 섬 타일을 배치합니다</li>
+            <li>탐험 주사위를 굴려 결과를 확인합니다</li>
+            <li>성공 시 발견 토큰을 획득합니다</li>
+            <li>실패 시 부상을 받거나 자원을 잃을 수 있습니다</li>
+            <li>새로운 섬 타일의 특별 효과를 확인합니다</li>
+          </ol>
+          <div class="tips-section">
+            <div class="tips-title">💡 탐험 팁</div>
+            <div class="tips-content">
+              발견 토큰은 매우 유용한 보상을 제공합니다. 탐험은 위험하지만 게임 승리에 필수적인 액션입니다.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="action-card">
+        <div class="action-header">
+          <div class="action-icon">💤</div>
+          <div class="action-title">휴식</div>
+        </div>
+        <div class="action-description">
+          부상을 치료하고 체력을 회복합니다.
+        </div>
+        <button class="expand-button" onclick="toggleDetails('rest-details')">상세 규칙 보기</button>
+        <div id="rest-details" class="detailed-content">
+          <ol class="action-steps">
+            <li>휴식할 캐릭터를 선택합니다</li>
+            <li>캠프에 있는 경우 부상을 2개 치료합니다</li>
+            <li>야외에 있는 경우 부상을 1개만 치료합니다</li>
+            <li>특별한 부상은 휴식으로 치료되지 않습니다</li>
+            <li>필요시 결정 토큰을 사용해 치료 효과를 증가시킵니다</li>
+          </ol>
+          <div class="tips-section">
+            <div class="tips-title">💡 휴식 팁</div>
+            <div class="tips-content">
+              부상이 쌓이면 액션 효율이 떨어지므로 적절한 휴식이 필요합니다. 캠프에서의 휴식이 더 효과적입니다.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="action-card">
+        <div class="action-header">
+          <div class="action-icon">🏕️</div>
+          <div class="action-title">야영지 정비</div>
+        </div>
+        <div class="action-description">
+          야영지를 이동하거나 정리하여 효율성을 높입니다.
+        </div>
+        <button class="expand-button" onclick="toggleDetails('camp-details')">상세 규칙 보기</button>
+        <div id="camp-details" class="detailed-content">
+          <ol class="action-steps">
+            <li>야영지를 이동할 새로운 위치를 선택합니다</li>
+            <li>이동에 필요한 자원을 확인하고 지불합니다</li>
+            <li>야영지 마커를 새 위치로 이동시킵니다</li>
+            <li>새 위치의 생산 보너스를 확인합니다</li>
+            <li>이동 후 추가 자원을 획득할 수 있습니다</li>
+          </ol>
+          <div class="tips-section">
+            <div class="tips-title">💡 야영지 팁</div>
+            <div class="tips-content">
+              자원이 풍부한 지역으로 야영지를 이동하면 생산량이 증가합니다. 전략적인 위치 선택이 중요합니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <script>
+    function toggleDetails(elementId) {
+      const element = document.getElementById(elementId);
+      const button = element.previousElementSibling;
+      
+      if (element.classList.contains('show')) {
+        element.classList.remove('show');
+        button.textContent = '상세 규칙 보기';
+      } else {
+        element.classList.add('show');
+        button.textContent = '상세 규칙 숨기기';
+      }
+    }
+  </script>
+</body>
+</html>
