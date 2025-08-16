@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>시나리오 - 로빈슨 크루소 디지털 룰북</title>
-  <meta name="description" content="로빈슨 크루소 보드게임의 각 시나리오별 특별 규칙과 승리 조건, 전략적 조언을 제공합니다.">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <style>
     * {
@@ -18,33 +15,37 @@
     
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0c4a6e 0%, #155e75 50%, #0e7490 100%);
+      background-image: url('https://github.com/jwj06294-creator/Rules.github.io/blob/main/Background.jpg?raw=true');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       min-height: 100vh;
       color: white;
+      position: relative;
     }
     
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 2rem;
     }
-    
+
     .header {
       text-align: center;
       margin-bottom: 3rem;
     }
-    
-    .logo {
-      font-family: 'Cinzel', serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-    }
-    
+
     .nav-home {
       display: inline-block;
       background: rgba(255, 255, 255, 0.1);
@@ -55,480 +56,405 @@
       text-decoration: none;
       margin-bottom: 2rem;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
     
     .nav-home:hover {
       background: rgba(255, 255, 255, 0.2);
       border-color: rgba(255, 255, 255, 0.5);
     }
-    
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+    }
+
+    .logo img {
+      height: 80px;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.3s ease, height 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
     .page-title {
       font-family: 'Cinzel', serif;
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
-    
+
     .page-description {
       font-size: 1.2rem;
-      opacity: 0.9;
+      opacity: 0.95;
       margin-bottom: 2rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     }
     
-    .scenarios-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+    .section {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #fbbf24;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
     
     .scenario-card {
       background: rgba(255, 255, 255, 0.1);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
-      padding: 2rem;
-      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
       transition: all 0.3s ease;
-      cursor: pointer;
+      backdrop-filter: blur(8px);
     }
     
     .scenario-card:hover {
       background: rgba(255, 255, 255, 0.15);
       border-color: rgba(255, 255, 255, 0.4);
       transform: translateY(-2px);
-    }
-    
-    .scenario-card.beginner {
-      border-color: rgba(34, 197, 94, 0.5);
-      box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
-    }
-    
-    .scenario-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .scenario-number {
-      background: #fbbf24;
-      color: #1e293b;
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-    }
-    
-    .scenario-info {
-      flex: 1;
-    }
-    
-    .scenario-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: white;
-    }
-    
-    .scenario-subtitle {
-      opacity: 0.8;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
     
     .difficulty-badge {
       display: inline-block;
       padding: 0.3rem 0.8rem;
-      border-radius: 15px;
+      border-radius: 20px;
       font-size: 0.8rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin: 0.5rem 0;
     }
     
-    .difficulty-beginner {
+    .difficulty-easy {
       background: rgba(34, 197, 94, 0.2);
       color: #22c55e;
-      border: 1px solid #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.4);
     }
     
-    .difficulty-intermediate {
+    .difficulty-medium {
       background: rgba(251, 191, 36, 0.2);
       color: #fbbf24;
-      border: 1px solid #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.4);
     }
     
-    .difficulty-advanced {
+    .difficulty-hard {
       background: rgba(239, 68, 68, 0.2);
       color: #ef4444;
-      border: 1px solid #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.4);
     }
     
-    .scenario-description {
-      line-height: 1.6;
-      opacity: 0.9;
-      margin-bottom: 1.5rem;
+    .details-button {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
     }
     
-    .scenario-goals {
-      background: rgba(0, 0, 0, 0.2);
+    .details-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .details-content {
+      display: none;
+      background: rgba(255, 255, 255, 0.15);
       border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
     
-    .goals-title {
-      font-weight: 600;
+    .details-content.show {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .details-content h4 {
       color: #fbbf24;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+      font-family: 'Cinzel', serif;
     }
     
-    .goals-list {
+    .details-content ul {
       list-style: none;
       padding-left: 0;
     }
     
-    .goals-list li {
-      margin-bottom: 0.3rem;
-      padding-left: 1rem;
+    .details-content li {
+      color: rgba(255, 255, 255, 1);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
       position: relative;
-      font-size: 0.9rem;
-      line-height: 1.4;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
     
-    .goals-list li::before {
-      content: "🎯";
+    .details-content li:before {
+      content: '•';
+      color: #fbbf24;
       position: absolute;
       left: 0;
+      font-weight: bold;
     }
-    
-    .scenario-details {
-      display: none;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .scenario-card.expanded .scenario-details {
-      display: block;
-    }
-    
-    .details-section {
-      margin-bottom: 1rem;
-    }
-    
-    .details-title {
-      font-weight: 600;
-      color: #fbbf24;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .details-content {
-      font-size: 0.9rem;
-      line-height: 1.5;
-      opacity: 0.9;
-    }
-    
-    .expand-button {
-      background: none;
-      border: none;
-      color: #fbbf24;
-      cursor: pointer;
-      font-size: 0.9rem;
-      padding: 0.5rem;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-      width: 100%;
-      text-align: center;
-      margin-top: 1rem;
-    }
-    
-    .expand-button:hover {
-      background: rgba(251, 191, 36, 0.1);
-    }
-    
+
     @media (max-width: 768px) {
       .container {
         padding: 1rem;
       }
       
-      .page-title {
-        font-size: 2rem;
+      .section {
+        padding: 1.5rem;
+        margin: 1rem 0;
       }
       
       .logo {
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
       
-      .scenarios-grid {
-        grid-template-columns: 1fr;
+      .nav-buttons {
+        gap: 0.5rem;
       }
       
-      .scenario-card {
-        padding: 1.5rem;
+      .nav-button {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <a href="index.html" class="nav-home" style="position: absolute; top: 2rem; left: 2rem; z-index: 10;">← 홈으로 돌아가기</a>
     <div class="header">
-      <a href="index.html" class="nav-home">← 홈으로 돌아가기</a>
-      <h1 class="logo">⚓ 로빈슨 크루소</h1>
-      <h2 class="page-title">시나리오</h2>
-      <p class="page-description">
-        각 시나리오별 특별 규칙과 승리 조건, 전략적 조언
-      </p>
+      <div class="logo" onclick="location.href='index.html'">
+        <img src="https://raw.githubusercontent.com/jwj06294-creator/Rules.github.io/refs/heads/main/logo.png" alt="Robinson Crusoe Logo" style="height: 80px; object-fit: contain; cursor: pointer;">
+      </div>
+      <div class="page-title">시나리오</div>
+      <div class="page-description">
+        다양한 시나리오와 모험을 선택하세요
+      </div>
+    </div>
+
+    
+    <div class="section">
+      <h2 class="section-title">🎯 시나리오 선택 가이드</h2>
+      <div style="line-height: 1.8; opacity: 0.95;">
+        <p style="margin-bottom: 1.5rem;">
+          <strong>🎓 첫 게임 플레이어:</strong> 조난자 시나리오로 기본 생존 메커니즘을 배우세요. 자원 관리와 건설의 기초를 익힐 수 있습니다.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+          <strong>⚔️ 도전적인 플레이:</strong> 화산 섬이나 외계인 침공으로 높은 난이도를 경험하세요. 시간 압박과 복잡한 전략이 필요합니다.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+          <strong>🕵️ 탐험과 미스터리:</strong> 해적의 보물이나 잃어버린 도시에서 퍼즐과 발견의 재미를 느껴보세요.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">🏝️ 기본 시나리오</h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        
+        <div class="scenario-card" style="width: 100%; margin: 0;">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+            <div style="font-size: 2rem;">🚢</div>
+            <div>
+              <h3 style="margin: 0; color: #fbbf24;">조난자 (Castaways)</h3>
+              <div class="difficulty-badge difficulty-easy" style="margin: 0.5rem 0;">초보자 추천</div>
+              <p style="margin: 0; line-height: 1.5; opacity: 0.9;">배가 난파되어 무인도에 떨어진 생존자들의 이야기. 기본 생존 메커니즘 학습에 최적.</p>
+            </div>
+          </div>
+          <button class="details-button" onclick="toggleDetails('castaways')">
+            상세 내용 <span id="castaways-arrow">▼</span>
+          </button>
+          <div id="castaways-details" class="details-content">
+            <div>
+              <h4>승리 조건</h4>
+              <ul>
+                <li>화로 신호 3개를 만들어 구조 신호 보내기</li>
+                <li>모든 플레이어가 살아있어야 함 (12라운드 이내)</li>
+              </ul>
+            </div>
+            <div style="margin-top: 1rem;">
+              <h4>특별 규칙</h4>
+              <ul>
+                <li>시작 자원: 음식 2개, 나무 1개</li>
+                <li>난파선에서 추가 자원 발견 가능</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-card" style="width: 100%; margin: 0;">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+            <div style="font-size: 2rem;">🏴‍☠️</div>
+            <div>
+              <h3 style="margin: 0; color: #fbbf24;">해적의 보물 (Treasure Island)</h3>
+              <div class="difficulty-badge difficulty-medium" style="margin: 0.5rem 0;">중급</div>
+              <p style="margin: 0; line-height: 1.5; opacity: 0.9;">전설적인 해적의 보물이 숨겨진 섬에서 보물을 찾는 모험. 탐험과 미스터리 해결 중심.</p>
+            </div>
+          </div>
+          <button class="details-button" onclick="toggleDetails('treasure')">
+            상세 내용 <span id="treasure-arrow">▼</span>
+          </button>
+          <div id="treasure-details" class="details-content">
+            <div>
+              <h4>승리 조건</h4>
+              <ul>
+                <li>해적의 보물 3개를 모두 발견</li>
+                <li>보물 지도의 모든 단서 해결 (15라운드 이내)</li>
+              </ul>
+            </div>
+            <div style="margin-top: 1rem;">
+              <h4>특별 규칙</h4>
+              <ul>
+                <li>보물 지도 조각을 탐험으로 발견</li>
+                <li>해적 유령들이 방해할 수 있음</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-card" style="width: 100%; margin: 0;">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+            <div style="font-size: 2rem;">🌋</div>
+            <div>
+              <h3 style="margin: 0; color: #fbbf24;">화산 섬 (Volcano Island)</h3>
+              <div class="difficulty-badge difficulty-hard" style="margin: 0.5rem 0;">고급</div>
+              <p style="margin: 0; line-height: 1.5; opacity: 0.9;">활화산이 있는 위험한 섬에서 탈출. 시간 압박과 재해 관리가 핵심.</p>
+            </div>
+          </div>
+          <button class="details-button" onclick="toggleDetails('volcano')">
+            상세 내용 <span id="volcano-arrow">▼</span>
+          </button>
+          <div id="volcano-details" class="details-content">
+            <div>
+              <h4>승리 조건</h4>
+              <ul>
+                <li>화산 폭발 전에 보트를 완성하여 탈출</li>
+                <li>모든 플레이어가 생존 (10라운드 이내)</li>
+              </ul>
+            </div>
+            <div style="margin-top: 1rem;">
+              <h4>특별 규칙</h4>
+              <ul>
+                <li>화산 활동으로 인한 주기적 재해</li>
+                <li>특수 보트 건설 요구사항</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-card" style="width: 100%; margin: 0;">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+            <div style="font-size: 2rem;">🏛️</div>
+            <div>
+              <h3 style="margin: 0; color: #fbbf24;">첫 도시 (The First City)</h3>
+              <div class="difficulty-badge difficulty-medium" style="margin: 0.5rem 0;">중급</div>
+              <p style="margin: 0; line-height: 1.5; opacity: 0.9;">고대 문명의 잃어버린 도시를 발견하고 비밀을 풀어야 하는 탐험 중심 시나리오.</p>
+            </div>
+          </div>
+          <button class="details-button" onclick="toggleDetails('lostcity')">
+            상세 내용 <span id="lostcity-arrow">▼</span>
+          </button>
+          <div id="lostcity-details" class="details-content">
+            <div>
+              <h4>승리 조건</h4>
+              <ul>
+                <li>고대 신전의 4개 방을 모두 탐험</li>
+                <li>황금 우상을 획득 (16라운드 이내)</li>
+              </ul>
+            </div>
+            <div style="margin-top: 1rem;">
+              <h4>특별 규칙</h4>
+              <ul>
+                <li>고대 함정과 수수께끼</li>
+                <li>신전 수호자들과의 조우</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
     
-    <div class="scenarios-grid">
-      <div class="scenario-card beginner" onclick="toggleScenario(this)">
-        <div class="scenario-header">
-          <div class="scenario-number">1</div>
-          <div class="scenario-info">
-            <div class="scenario-title">로빈슨의 꿈</div>
-            <div class="scenario-subtitle">Robinson's Dream</div>
-            <div class="difficulty-badge difficulty-beginner">초급자용</div>
+    <div class="section" style="padding: 1.5rem;">
+      <h2 class="section-title">🔄 시나리오 확장</h2>
+      <div style="line-height: 1.6; opacity: 0.9;">
+        <p style="margin-bottom: 1rem;">기본 게임에 익숙해지면 다음 방법으로 확장할 수 있습니다:</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+          <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
+            <strong>조합 시나리오</strong><br>
+            두 시나리오 요소 결합
           </div>
-        </div>
-        <div class="scenario-description">
-          가장 기본적인 시나리오로, 게임의 메커니즘을 익히기에 적합합니다. 단순히 생존하는 것이 목표입니다.
-        </div>
-        <div class="scenario-goals">
-          <div class="goals-title">🎯 승리 조건</div>
-          <ul class="goals-list">
-            <li>12라운드 동안 생존하기</li>
-            <li>모든 플레이어가 살아남아야 함</li>
-          </ul>
-        </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="scenario-details">
-          <div class="details-section">
-            <div class="details-title">📝 특별 규칙</div>
-            <div class="details-content">특별한 규칙은 없습니다. 기본 게임 규칙만 적용됩니다.</div>
+          <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
+            <strong>난이도 조절</strong><br>
+            라운드 수 변경
           </div>
-          <div class="details-section">
-            <div class="details-title">💡 전략 팁</div>
-            <div class="details-content">피난처와 무기를 우선적으로 만들고, 음식 확보에 신경쓰세요. 탐험보다는 안정적인 자원 관리에 집중하는 것이 좋습니다.</div>
+          <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
+            <strong>사용자 규칙</strong><br>
+            특별 규칙 추가
           </div>
-          <div class="details-section">
-            <div class="details-title">⏱️ 예상 소요 시간</div>
-            <div class="details-content">90-120분 (첫 게임의 경우 더 오래 걸릴 수 있음)</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="scenario-card" onclick="toggleScenario(this)">
-        <div class="scenario-header">
-          <div class="scenario-number">2</div>
-          <div class="scenario-info">
-            <div class="scenario-title">저주받은 섬</div>
-            <div class="scenario-subtitle">Cursed Island</div>
-            <div class="difficulty-badge difficulty-intermediate">중급자용</div>
-          </div>
-        </div>
-        <div class="scenario-description">
-          섬에 내려진 저주를 풀어야 하는 시나리오입니다. 미스터리 카드와 특별한 이벤트들이 등장합니다.
-        </div>
-        <div class="scenario-goals">
-          <div class="goals-title">🎯 승리 조건</div>
-          <ul class="goals-list">
-            <li>섬의 저주를 풀기 위한 의식 완료</li>
-            <li>특별한 발명품 3개 제작</li>
-            <li>12라운드 안에 목표 달성</li>
-          </ul>
-        </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="scenario-details">
-          <div class="details-section">
-            <div class="details-title">📝 특별 규칙</div>
-            <div class="details-content">미스터리 카드가 추가됩니다. 특정 조건에서 저주 토큰이 쌓이며, 이는 부정적인 영향을 미칩니다.</div>
-          </div>
-          <div class="details-section">
-            <div class="details-title">💡 전략 팁</div>
-            <div class="details-content">탐험을 통해 미스터리 카드를 적극적으로 수집하세요. 저주 토큰이 쌓이기 전에 빠르게 목표를 달성하는 것이 중요합니다.</div>
-          </div>
-          <div class="details-section">
-            <div class="details-title">⏱️ 예상 소요 시간</div>
-            <div class="details-content">120-150분</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="scenario-card" onclick="toggleScenario(this)">
-        <div class="scenario-header">
-          <div class="scenario-number">3</div>
-          <div class="scenario-info">
-            <div class="scenario-title">킹 콩의 섬</div>
-            <div class="scenario-subtitle">King Kong Island</div>
-            <div class="difficulty-badge difficulty-advanced">고급자용</div>
-          </div>
-        </div>
-        <div class="scenario-description">
-          거대한 야수와 맞서 싸워야 하는 도전적인 시나리오입니다. 강력한 적들과 험난한 환경이 기다립니다.
-        </div>
-        <div class="scenario-goals">
-          <div class="goals-title">🎯 승리 조건</div>
-          <ul class="goals-list">
-            <li>킹 콩을 물리치거나 달래기</li>
-            <li>특별한 무기 제작</li>
-            <li>모든 플레이어 생존</li>
-          </ul>
-        </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="scenario-details">
-          <div class="details-section">
-            <div class="details-title">📝 특별 규칙</div>
-            <div class="details-content">킹 콩 미니어처와 특별한 야수 카드들이 사용됩니다. 킹 콩은 매 라운드마다 플레이어들을 공격합니다.</div>
-          </div>
-          <div class="details-section">
-            <div class="details-title">💡 전략 팁</div>
-            <div class="details-content">강력한 무기와 방어구를 빠르게 제작해야 합니다. 팀워크가 매우 중요하며, 역할 분담을 명확히 하세요.</div>
-          </div>
-          <div class="details-section">
-            <div class="details-title">⏱️ 예상 소요 시간</div>
-            <div class="details-content">150-180분</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="scenario-card" onclick="toggleScenario(this)">
-        <div class="scenario-header">
-          <div class="scenario-number">4</div>
-          <div class="scenario-info">
-            <div class="scenario-title">화산 섬</div>
-            <div class="scenario-subtitle">Volcano Island</div>
-            <div class="difficulty-badge difficulty-intermediate">중급자용</div>
-          </div>
-        </div>
-        <div class="scenario-description">
-          활화산이 있는 섬에서 살아남아야 하는 시나리오입니다. 용암과 지진 등 자연 재해가 끊임없이 위협합니다.
-        </div>
-        <div class="scenario-goals">
-          <div class="goals-title">🎯 승리 조건</div>
-          <ul class="goals-list">
-            <li>화산 폭발 전에 탈출용 뗏목 완성</li>
-            <li>모든 생존자를 안전한 곳으로 이동</li>
-            <li>10라운드 안에 목표 달성</li>
-          </ul>
-        </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="scenario-details">
-          <div class="details-section">
-            <div class="details-title">📝 특별 규칙</div>
-            <div class="details-content">화산 위험도가 매 라운드 증가합니다. 특정 수준에 도달하면 용암이 흘러 일부 지역이 사용 불가능해집니다.</div>
-          </div>
-          <div class="details-section">
-            <div class="details-title">💡 전략 팁</div>
-            <div class="details-content">시간이 제한되어 있으므로 효율적인 자원 관리가 핵심입니다. 뗏목 건설에 필요한 자원을 우선 확보하세요.</div>
-          </div>
-          <div class="details-section">
-            <div class="details-title">⏱️ 예상 소요 시간</div>
-            <div class="details-content">100-130분</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="scenario-card" onclick="toggleScenario(this)">
-        <div class="scenario-header">
-          <div class="scenario-number">5</div>
-          <div class="scenario-info">
-            <div class="scenario-title">보물섬</div>
-            <div class="scenario-subtitle">Treasure Island</div>
-            <div class="difficulty-badge difficulty-intermediate">중급자용</div>
-          </div>
-        </div>
-        <div class="scenario-description">
-          전설의 보물을 찾아야 하는 모험적인 시나리오입니다. 해적들과 함정이 곳곳에 숨어있습니다.
-        </div>
-        <div class="scenario-goals">
-          <div class="goals-title">🎯 승리 조건</div>
-          <ul class="goals-list">
-            <li>전설의 보물 발견</li>
-            <li>해적선으로부터 보물 보호</li>
-            <li>보물 지도의 모든 단서 수집</li>
-          </ul>
-        </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="scenario-details">
-          <div class="details-section">
-            <div class="details-title">📝 특별 규칙</div>
-            <div class="details-content">보물 지도 조각들을 수집해야 하며, 해적 이벤트가 추가됩니다. 특별한 보물 토큰들이 등장합니다.</div>
-          </div>
-          <div class="details-section">
-            <div class="details-title">💡 전략 팁</div>
-            <div class="details-content">탐험에 많은 자원을 투자해야 합니다. 해적 공격에 대비해 방어 수단을 마련하는 것도 중요합니다.</div>
-          </div>
-          <div class="details-section">
-            <div class="details-title">⏱️ 예상 소요 시간</div>
-            <div class="details-content">130-160분</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="scenario-card" onclick="toggleScenario(this)">
-        <div class="scenario-header">
-          <div class="scenario-number">6</div>
-          <div class="scenario-info">
-            <div class="scenario-title">좀비 아일랜드</div>
-            <div class="scenario-subtitle">Zombie Island</div>
-            <div class="difficulty-badge difficulty-advanced">고급자용</div>
-          </div>
-        </div>
-        <div class="scenario-description">
-          좀비 바이러스가 퍼진 섬에서 생존해야 하는 호러 시나리오입니다. 끊임없는 좀비 공격과 바이러스 확산에 맞서야 합니다.
-        </div>
-        <div class="scenario-goals">
-          <div class="goals-title">🎯 승리 조건</div>
-          <ul class="goals-list">
-            <li>바이러스 치료제 개발</li>
-            <li>좀비 감염 방지</li>
-            <li>안전 지대 확보 및 유지</li>
-          </ul>
-        </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="scenario-details">
-          <div class="details-section">
-            <div class="details-title">📝 특별 규칙</div>
-            <div class="details-content">감염 메커니즘이 추가되며, 좀비 미니어처들이 매 라운드 증가합니다. 특별한 의료 장비와 치료제 연구 규칙이 적용됩니다.</div>
-          </div>
-          <div class="details-section">
-            <div class="details-title">💡 전략 팁</div>
-            <div class="details-content">방어에 집중하고 안전한 기지를 빠르게 구축하세요. 의료진 캐릭터의 활용이 매우 중요합니다.</div>
-          </div>
-          <div class="details-section">
-            <div class="details-title">⏱️ 예상 소요 시간</div>
-            <div class="details-content">160-200분</div>
+          <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
+            <strong>캠페인 모드</strong><br>
+            시나리오 연결
           </div>
         </div>
       </div>
     </div>
   </div>
+
+<script>
+function toggleDetails(scenarioId) {
+  const detailsElement = document.getElementById(scenarioId + '-details');
+  const arrowElement = document.getElementById(scenarioId + '-arrow');
+  const button = event.target;
   
-  <script>
-    function toggleScenario(card) {
-      const isExpanded = card.classList.contains('expanded');
-      const button = card.querySelector('.expand-button');
-      
-      if (isExpanded) {
-        card.classList.remove('expanded');
-        button.textContent = '세부사항 보기 ▼';
-      } else {
-        card.classList.add('expanded');
-        button.textContent = '세부사항 숨기기 ▲';
-      }
-    }
-  </script>
+  if (detailsElement.classList.contains('show')) {
+    detailsElement.classList.remove('show');
+    arrowElement.textContent = '▼';
+    button.innerHTML = '상세 내용 <span id="' + scenarioId + '-arrow">▼</span>';
+  } else {
+    detailsElement.classList.add('show');
+    arrowElement.textContent = '▲';
+    button.innerHTML = '상세 내용 <span id="' + scenarioId + '-arrow">▲</span>';
+  }
+}
+</script>
 </body>
 </html>
