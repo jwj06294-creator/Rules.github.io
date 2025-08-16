@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>게임 진행 - 로빈슨 크루소 디지털 룰북</title>
-  <meta name="description" content="로빈슨 크루소 보드게임의 라운드별 단계 순서와 각 단계의 상세한 진행 방법을 설명합니다.">
+  <title>게임 진행 | 로빈슨 크루소 디지털 룰북</title>
+  <meta name="description" content="라운드별 단계와 상세한 진행 순서를 확인하세요.">
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,9 +18,24 @@
     
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0c4a6e 0%, #155e75 50%, #0e7490 100%);
+      background-image: url('https://github.com/jwj06294-creator/Rules.github.io/blob/main/Background.jpg?raw=true');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       min-height: 100vh;
       color: white;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
     }
     
     .container {
@@ -34,17 +49,6 @@
       margin-bottom: 3rem;
     }
     
-    .logo {
-      font-family: 'Cinzel', serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-    }
-    
     .nav-home {
       display: inline-block;
       background: rgba(255, 255, 255, 0.1);
@@ -55,6 +59,7 @@
       text-decoration: none;
       margin-bottom: 2rem;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
     
     .nav-home:hover {
@@ -62,104 +67,121 @@
       border-color: rgba(255, 255, 255, 0.5);
     }
     
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+    }
+    
+    .logo img {
+      height: 80px;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.3s ease, height 0.3s ease;
+    }
+    
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+    
     .page-title {
       font-family: 'Cinzel', serif;
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
     
     .page-description {
       font-size: 1.2rem;
-      opacity: 0.9;
+      opacity: 0.95;
       margin-bottom: 2rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     }
     
-    .phases-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+    .section {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #fbbf24;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .hidden {
+      display: none;
     }
     
     .phase-card {
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
-      padding: 2rem;
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 12px;
+      padding: 1.5rem;
       transition: all 0.3s ease;
       cursor: pointer;
+      width: 315px;
+      min-height: 115px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(8px);
     }
     
     .phase-card:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.6);
       transform: translateY(-2px);
-    }
-    
-    .phase-card.highlighted {
-      border-color: #fbbf24;
-      box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
-    }
-    
-    .phase-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .phase-number {
-      background: #fbbf24;
-      color: #1e293b;
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-    
-    .phase-icon {
-      font-size: 2rem;
-    }
-    
-    .phase-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      flex: 1;
-    }
-    
-    .phase-description {
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-      opacity: 0.9;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
     
     .phase-details {
-      display: none;
-      margin-top: 1rem;
-    }
-    
-    .phase-card.expanded .phase-details {
-      display: block;
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 1rem !important;
+      margin-top: 1rem !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
     }
     
     .phase-details ul {
-      list-style: none;
-      padding-left: 1rem;
+      margin: 0;
+      padding-left: 0;
     }
     
     .phase-details li {
-      margin-bottom: 0.5rem;
-      padding-left: 1rem;
-      position: relative;
+      color: rgba(255, 255, 255, 1);
       line-height: 1.5;
-      opacity: 0.9;
+      margin-bottom: 0.6rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* 카드 내 모든 텍스트 가독성 향상 */
+    .phase-card div[style*="font-family: 'Cinzel'"] {
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    .phase-card div[style*="margin-bottom: 0.8rem"] {
+      opacity: 1 !important;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
     }
     
     .phase-details li::before {
@@ -171,18 +193,28 @@
     }
     
     .expand-button {
-      background: none;
-      border: none;
-      color: #fbbf24;
-      cursor: pointer;
-      font-size: 1rem;
-      padding: 0.5rem;
-      border-radius: 4px;
-      transition: all 0.3s ease;
+      background: rgba(59, 130, 246, 0.2) !important;
+      border: 1px solid rgba(59, 130, 246, 0.4) !important;
+      color: #3b82f6 !important;
+      padding: 0.4rem 1rem !important;
+      border-radius: 6px !important;
+      cursor: pointer !important;
+      font-size: 0.85rem !important;
+      font-weight: 500 !important;
+      transition: all 0.3s ease !important;
     }
     
     .expand-button:hover {
-      background: rgba(251, 191, 36, 0.1);
+      background: rgba(59, 130, 246, 0.3) !important;
+      border-color: rgba(59, 130, 246, 0.6) !important;
+      transform: translateY(-1px);
+    }
+    
+    /* Tablet Responsive */
+    @media (max-width: 1024px) {
+      .logo img {
+        height: 70px;
+      }
     }
     
     @media (max-width: 768px) {
@@ -191,174 +223,189 @@
       }
       
       .page-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
       
-      .logo {
-        font-size: 2rem;
-      }
-      
-      .phases-grid {
-        grid-template-columns: 1fr;
+      .section {
+        padding: 1.5rem;
       }
       
       .phase-card {
-        padding: 1.5rem;
+        width: 100%;
+        min-height: auto;
+      }
+      
+      .logo img {
+        height: 60px;
+      }
+    }
+    
+    /* Small Mobile Responsive */
+    @media (max-width: 480px) {
+      .logo img {
+        height: 50px;
+      }
+      
+      .page-title {
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <a href="index.html" class="nav-home" style="position: absolute; top: 2rem; left: 2rem; z-index: 10;">← 홈으로 돌아가기</a>
     <div class="header">
-      <a href="index.html" class="nav-home">← 홈으로 돌아가기</a>
-      <h1 class="logo">⚓ 로빈슨 크루소</h1>
-      <h2 class="page-title">게임 진행</h2>
-      <p class="page-description">
-        라운드별 단계 순서와 각 단계의 상세한 진행 방법
+      <div class="logo" onclick="location.href='index.html'">
+        <img src="https://raw.githubusercontent.com/jwj06294-creator/Rules.github.io/refs/heads/main/logo.png" alt="Robinson Crusoe Logo" style="height: 80px; object-fit: contain; cursor: pointer;">
+      </div>
+      <div class="page-title">게임 진행</div>
+      <div class="page-description">
+        라운드별 단계와 진행 순서
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2 class="section-title">📋 게임 진행 개요</h2>
+      <p style="line-height: 1.6; opacity: 0.9; margin-bottom: 1rem;">
+        로빈슨 크루소는 라운드 기반으로 진행되며, 각 라운드는 6단계로 구성됩니다.
       </p>
     </div>
     
-    <div class="phases-grid">
+    <div class="phases-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(315px, 1fr)); gap: 1.5rem; margin-top: 2rem; justify-items: center;">
       <div class="phase-card" onclick="togglePhase(this)">
-        <div class="phase-header">
-          <div class="phase-number">1</div>
-          <div class="phase-icon">📋</div>
-          <div class="phase-title">이벤트 단계</div>
+        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem;">
+          <div class="phase-number" style="background: #fbbf24; color: #0c4a6e; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem;">1</div>
+          <div style="font-size: 1.2rem;">🎴</div>
+          <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 600; flex: 1; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">이벤트 단계</div>
         </div>
-        <div class="phase-description">
-          이벤트 카드를 뽑아 그 효과를 적용합니다. 첫 번째 라운드에서는 건너뜁니다.
+        <div style="margin-bottom: 0.8rem; line-height: 1.4; opacity: 1; font-size: 0.85rem; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">
+          라운드 시작 시 이벤트 카드를 뽑아 즉시 해결합니다.
         </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="phase-details">
-          <ul>
-            <li>1라운드에서는 이벤트 단계를 건너뜁니다</li>
-            <li>2라운드부터 이벤트 덱에서 카드 1장을 뽑습니다</li>
-            <li>이벤트 카드의 효과를 즉시 적용합니다</li>
-            <li>일부 이벤트는 영구적 효과를 가지며 게임 보드에 남습니다</li>
-            <li>이벤트 해결 후 카드를 이벤트 버린 더미에 놓습니다</li>
+        <button class="expand-button" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">세부사항 보기 ▼</button>
+        <div class="phase-details" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">이벤트 덱에서 카드 1장을 뽑습니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">카드의 내용을 읽고 즉시 효과를 적용합니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">일부 이벤트는 선택지를 제공합니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">해결된 이벤트 카드는 버립니다</li>
           </ul>
         </div>
       </div>
       
       <div class="phase-card" onclick="togglePhase(this)">
-        <div class="phase-header">
-          <div class="phase-number">2</div>
-          <div class="phase-icon">😊</div>
-          <div class="phase-title">투지 단계</div>
+        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem;">
+          <div class="phase-number" style="background: #fbbf24; color: #0c4a6e; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem;">2</div>
+          <div style="font-size: 1.2rem;">💪</div>
+          <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 600; flex: 1;">사기 단계</div>
         </div>
-        <div class="phase-description">
-          현재 투지 수준에 따라 결정 토큰을 얻거나 잃습니다.
+        <div style="margin-bottom: 0.8rem; line-height: 1.4; opacity: 0.9; font-size: 0.85rem;">
+          플레이어들이 서로 협력하여 사기를 결정합니다.
         </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="phase-details">
-          <ul>
-            <li>투지 마커의 현재 위치를 확인합니다</li>
-            <li>투지 수준이 양수면 해당 수만큼 결정 토큰을 얻습니다</li>
-            <li>투지 수준이 음수면 해당 수만큼 결정 토큰을 잃습니다</li>
-            <li>투지가 0이면 결정 토큰 변화가 없습니다</li>
-            <li>결정 토큰은 개인 공급원 한도를 초과할 수 없습니다</li>
+        <button class="expand-button" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">세부사항 보기 ▼</button>
+        <div class="phase-details" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">모든 플레이어가 함께 토론하여 사기 수준을 결정</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">높은 사기: 추가 액션 또는 보너스 획득</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">낮은 사기: 제약이나 페널티 발생</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">사기는 이전 라운드 결과에 영향을 받습니다</li>
           </ul>
         </div>
       </div>
       
       <div class="phase-card" onclick="togglePhase(this)">
-        <div class="phase-header">
-          <div class="phase-number">3</div>
-          <div class="phase-icon">🏭</div>
-          <div class="phase-title">생산 단계</div>
+        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem;">
+          <div class="phase-number" style="background: #fbbf24; color: #0c4a6e; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem;">3</div>
+          <div style="font-size: 1.2rem;">⚡</div>
+          <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 600; flex: 1;">액션 단계</div>
         </div>
-        <div class="phase-description">
-          캠프가 위치한 섬 타일에 따라 자원을 생산합니다.
+        <div style="margin-bottom: 0.8rem; line-height: 1.4; opacity: 0.9; font-size: 0.85rem;">
+          각 플레이어가 자신의 액션을 선택하고 실행합니다.
         </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="phase-details">
-          <ul>
-            <li>캠프가 있는 섬 타일의 생산 아이콘을 확인합니다</li>
-            <li>해당 자원을 일반 공급원에서 가져옵니다</li>
-            <li>피난처나 발명품의 추가 생산 효과를 적용합니다</li>
-            <li>시나리오별 특수 생산 규칙이 있는지 확인합니다</li>
-            <li>생산된 자원을 개인 보드에 배치합니다</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="phase-card highlighted" onclick="togglePhase(this)">
-        <div class="phase-header">
-          <div class="phase-number">4</div>
-          <div class="phase-icon">⚡</div>
-          <div class="phase-title">액션 단계</div>
-        </div>
-        <div class="phase-description">
-          플레이어들이 액션을 계획하고 실행합니다. 게임의 핵심 단계입니다.
-        </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="phase-details">
-          <ul>
-            <li>모든 플레이어가 동시에 플레이어 토큰을 배치합니다</li>
-            <li>액션 해결 순서: 위험 대비 → 사냥 → 건설 → 수집 → 탐험 → 휴식 → 야영지 정비</li>
-            <li>각 액션 타입별로 순서대로 해결합니다</li>
-            <li>위험 토큰이 있는 액션부터 먼저 처리합니다</li>
-            <li>모든 액션 해결 후 다음 단계로 진행합니다</li>
+        <button class="expand-button" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">세부사항 보기 ▼</button>
+        <div class="phase-details" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">플레이어는 순서대로 액션을 선택합니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">같은 액션에 여러 플레이어가 참여할 수 있습니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">액션에는 건설, 수집, 탐험, 사냥, 휴식 등이 있습니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">각 액션은 주사위 굴림으로 성공 여부를 결정합니다</li>
           </ul>
         </div>
       </div>
       
       <div class="phase-card" onclick="togglePhase(this)">
-        <div class="phase-header">
-          <div class="phase-number">5</div>
-          <div class="phase-icon">🌦️</div>
-          <div class="phase-title">날씨 단계</div>
+        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem;">
+          <div class="phase-number" style="background: #fbbf24; color: #0c4a6e; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem;">4</div>
+          <div style="font-size: 1.2rem;">☀️</div>
+          <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 600; flex: 1;">날씨 단계</div>
         </div>
-        <div class="phase-description">
-          날씨 주사위를 굴려 날씨 효과를 해결합니다.
+        <div style="margin-bottom: 0.8rem; line-height: 1.4; opacity: 0.9; font-size: 0.85rem;">
+          현재 날씨에 따른 효과를 적용합니다.
         </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="phase-details">
-          <ul>
-            <li>첫 번째 플레이어가 날씨 주사위를 굴립니다</li>
-            <li>주사위 결과에 따라 날씨 마커를 이동시킵니다</li>
-            <li>현재 날씨 상태의 효과를 모든 플레이어에게 적용합니다</li>
-            <li>피난처나 발명품으로 날씨 효과를 완화할 수 있습니다</li>
-            <li>날씨 효과 해결 후 다음 단계로 진행합니다</li>
+        <button class="expand-button" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">세부사항 보기 ▼</button>
+        <div class="phase-details" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">현재 날씨 상태를 확인합니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">날씨에 따른 자원 소모나 보너스를 적용</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">쉘터가 없으면 날씨 피해를 받을 수 있습니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">날씨는 다음 라운드로 변경될 수 있습니다</li>
           </ul>
         </div>
       </div>
       
       <div class="phase-card" onclick="togglePhase(this)">
-        <div class="phase-header">
-          <div class="phase-number">6</div>
-          <div class="phase-icon">🌙</div>
-          <div class="phase-title">밤 단계</div>
+        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem;">
+          <div class="phase-number" style="background: #fbbf24; color: #0c4a6e; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem;">5</div>
+          <div style="font-size: 1.2rem;">🍖</div>
+          <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 600; flex: 1;">생산 단계</div>
         </div>
-        <div class="phase-description">
-          하루를 마무리하고 다음 라운드를 준비합니다.
+        <div style="margin-bottom: 0.8rem; line-height: 1.4; opacity: 0.9; font-size: 0.85rem;">
+          건설된 구조물과 발명품에서 자원을 생산합니다.
         </div>
-        <button class="expand-button">세부사항 보기 ▼</button>
-        <div class="phase-details">
-          <ul>
-            <li>라운드 마커를 다음 칸으로 이동시킵니다</li>
-            <li>모든 플레이어 토큰을 개인 보드로 되돌립니다</li>
-            <li>일회용 효과들을 제거합니다</li>
-            <li>첫 번째 플레이어 마커를 시계 방향으로 넘깁니다</li>
-            <li>시나리오 목표 달성 여부를 확인합니다</li>
+        <button class="expand-button" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">세부사항 보기 ▼</button>
+        <div class="phase-details" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">농장, 사냥 덫 등에서 자동으로 자원 획득</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">일부 발명품은 특별한 효과를 제공</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">생산량은 구조물의 종류와 수준에 따라 달라집니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">생산된 자원은 즉시 획득합니다</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="phase-card" onclick="togglePhase(this)">
+        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem;">
+          <div class="phase-number" style="background: #fbbf24; color: #0c4a6e; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem;">6</div>
+          <div style="font-size: 1.2rem;">🌙</div>
+          <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 600; flex: 1;">야간 단계</div>
+        </div>
+        <div style="margin-bottom: 0.8rem; line-height: 1.4; opacity: 0.9; font-size: 0.85rem;">
+          라운드 종료 시 음식 소모와 정리를 진행합니다.
+        </div>
+        <button class="expand-button" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">세부사항 보기 ▼</button>
+        <div class="phase-details" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">각 플레이어는 음식 1개를 소모합니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">음식이 없으면 생명력을 1 잃습니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">라운드 마커를 다음 칸으로 이동합니다</li>
+            <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;">임시 효과들을 제거하고 다음 라운드를 준비합니다</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
-  
+
   <script>
     function togglePhase(card) {
-      const isExpanded = card.classList.contains('expanded');
+      const details = card.querySelector('.phase-details');
       const button = card.querySelector('.expand-button');
       
-      if (isExpanded) {
-        card.classList.remove('expanded');
-        button.textContent = '세부사항 보기 ▼';
-      } else {
-        card.classList.add('expanded');
+      if (details.style.display === 'none' || details.style.display === '') {
+        details.style.display = 'block';
         button.textContent = '세부사항 숨기기 ▲';
+      } else {
+        details.style.display = 'none';
+        button.textContent = '세부사항 보기 ▼';
       }
     }
   </script>
